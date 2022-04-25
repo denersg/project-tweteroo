@@ -40,23 +40,9 @@ app.post("/tweets", (req, res) => {
 });
 
 app.get("/tweets", (req, res) => {
-    // console.log("ENTROU EM TWEETS");
-    // for(let i = 0; i < TWEETS.length; i++){
-        res.send(TWEETS);
-    // }
+    res.send(TWEETS);
 });
 
 app.listen(5000, () => {
     console.log(chalk.blue.bold("Servidor de pé na porta 5000"));
 });
-
-
-
-/* ------- Como rodar -------
-Pra conseguir rodar, eu tenho que ligar o servidor com a requisição post do 'sign-up' somente.
-
-NÃO posso ligar os outros servidores antes de fazer o cadastro e enviar o 1º tweet. Depois
-de mandar o 1º tweet, aí sim eu posso ligar os outros servidores de 'get' e 'post'
-(até p/ ver qual foi o resultado)
-
-*/

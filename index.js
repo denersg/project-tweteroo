@@ -22,7 +22,6 @@ app.post("/sign-up", (req, res) => {
     userData.push(userSignUp);
     res.send("OK");
     console.log(chalk.green("OK"));
-    console.log("body da requisição(sign-up):", body);
 });
 
 app.post("/tweets", (req, res) => {
@@ -36,11 +35,27 @@ app.post("/tweets", (req, res) => {
     TWEETS.push(newTweet);
     res.send("OK");
     console.log(chalk.magenta.inverse("OK"));
-    console.log("body da requisição(tweets):", body);
 });
 
+function returnLastMessages(arr){
+    if(arr.length <= 10){
+        const messages = [];
+        for(let i = arr.length-1; i >= 0; i--){
+            messages.push(arr[i]);
+        }
+        return(messages);
+    }
+    else{
+        let messages = [];
+        for(let i = arr.length-1; i >= arr.length-10; i--){
+            messages.push(arr[i]);
+        }
+        return(messages);
+    }
+}
+
 app.get("/tweets", (req, res) => {
-    res.send(TWEETS);
+    res.send(returnLastMessages(TWEETS));
 });
 
 app.listen(5000, () => {
